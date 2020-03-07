@@ -1,0 +1,91 @@
+{%load static%}
+
+<html>
+
+<head>
+  {%block title%}
+  
+	
+  
+  
+  {%endblock%}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	 <link rel="shortcut icon" href="{% static 'images/icon.png' %}" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  {%block stylesheet%}
+  {%endblock%}
+
+
+
+<style>
+	h1{
+		font-family: 'Raleway', sans-serif;
+
+	}
+</style>
+</head>
+
+<body>
+	
+    <nav class="navbar navbar-expand-sm bg-primary justify-content-between">
+  <ul class="navbar-nav text-white">
+  	<span class='fa fa-leaf' style='margin-top: 19px;margin-right: 9px;'></span>
+  	<a class='navbar-brand text-white' style='font-size: 25px;' href="{%url 'home'%}">Medica!</a>
+    {%if user.is_authenticated%}
+     <li class="nav-item text-white">
+      <a class="nav-link text-white" style='margin-top: 5px;margin-left: 10px;' href="{%url 'diagnose'%}">Diagnose</a>
+    </li>
+    {%endif%}
+
+    <li class="nav-item text-white">
+      <a class="nav-link text-white" style='margin-top: 5px;margin-left: 10px;' href="#">About Us</a>
+    </li>
+
+    <li class='nav-item'>
+    	<a class='nav-link' style='margin-top: 5px;margin-left: 10px;'> Pricing</a>
+    </li>
+</ul>
+{%if user.is_authenticated%}
+<ul class="navbar-nav text-white ">
+     
+     <li class='nav-link dropdown'>
+    <a class='nav-link dropdown-toggle text-light' href='#' data-toggle='dropdown' style='margin-right: 5px;'>{{user.username}}</a>
+    <div class='dropdown-menu dropdown-menu-right' >
+      <a href='{%url "myaccount"%}' class='text-dark dropdown-item'>My Account</a>
+      <a href='{%url "logout"%}' class='text-dark dropdown-item'>Logout</a>
+    </div>
+  </li>
+     
+
+
+   
+    
+  </ul>
+{%else%}
+
+<ul class="navbar-nav text-white ">
+     <li class='nav-link '><a class='btn btn-outline-light text-white bg-primary float-right'  style='float:right;' href="{%url 'signup'%}">Signup</a></li>
+	 <li class='nav-link '><a class='btn btn-outline-primary text-primary bg-white float-right' href="{%url 'login'%}"style='float:right;border-width: 2px;'>Login</a></li>
+    
+  </ul>
+  {%endif%}
+</nav>
+
+
+<div class="row" style="margin-top: 50px;">
+      <div class="col-sm-1 bg-white" ></div>
+      <div class="col-sm-10 " style='background-color: white;' >
+      	{%block content%}
+      	{%endblock%}
+      	
+      <div class="col-sm-1 bg-white" ></div>
+    </div>
+</body>
+
+
+</html>

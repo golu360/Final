@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{%block title%}
+  
+	<title>{{title}}</title>
+  
+  
+  {%endblock%}
+{%block content%}
+
+
+	<div class='row justify-content-center' style='margin-top: 10px;margin-bottom: 10px; border-radius: 10px;'>
+<div class='card'>
+	<div class='card-header'>
+		<h1 class='text-dark'>Signup!</h1>
+	</div>
+		<div class='card-body'>
+<form method="post" novalidate>
+      {% csrf_token %}
+      {% include 'includes/form.html' %}
+      <div class='text-center'>
+      <button type="submit" class="btn btn-primary justify-content-center" >Create an account</button>
+  </div>
+    </form>
+{%endblock%}

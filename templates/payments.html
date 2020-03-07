@@ -1,0 +1,21 @@
+{%extends 'base.html'}
+
+{%block title%}
+<title>{{title}}</title>
+{%endblock%}
+
+
+
+
+{%block content%}
+<h3>Checkout at Medica!</h3>
+<form action="{% url 'charge' %}" method="post">
+  {% csrf_token %}
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="{{ key }}"
+    data-description="A Django Charge"
+    data-amount="5000"
+    data-locale="auto">
+</script>
+</form>
+{%endblock%}
