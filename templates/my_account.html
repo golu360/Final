@@ -1,0 +1,102 @@
+{%extends 'base.html'%}
+
+
+
+{%block title%}
+  
+	<title>{{title}}</title>
+  
+  
+  {%endblock%}
+
+{%block content%}
+
+
+<div class="row">
+	<div class='col-3'  >
+		<ul class='nav flex-column nav-pills' id='tabs' role='tablist' aria-orientation='vertical' style='margin :50px;'>
+			<li class='nav-item' >
+		<a class='nav-link active' data-toggle='pill' href='#history'>Diagnosis History</a>
+	</li>
+
+	<li class='nav-item' >
+		<a class='nav-link ' data-toggle='pill' href='#account'> Account Management</a>
+	</li>
+
+	<li class='nav-item' >
+		<a class='nav-link ' data-toggle='pill' href='#billing'>Billing and Payments</a>
+	</li>
+		</ul>
+	</div>
+
+
+<div class='col-9'>
+	<div class='tab-content'>
+
+	<div class='tab-pane active ' id='history'>
+		<br>
+		<h3>Previous Diagnosis</h3>
+		<br>
+		<table class='table-striped table-hover col-sm-12' cellpadding="7" cellspacing="7">
+			<tr style='background-color: dodgerblue;' class='text-light'>
+				<th>Filename</th>
+				<th>User</th>
+				<th>Prediction</th>
+				<th>Date</th>
+			</tr>
+			{%for result in results%}
+			<tr>
+				
+				<td>{{result.filename}}</td>
+				<td>{{result.user}}</td>
+				<td>{{result.prediction}}</td>
+				<td>{{result.date}}</td>
+			</tr>
+				{%endfor%}
+			</table>
+	</div>
+
+
+
+	<div class=' tab-pane fade' id='account'>
+		<br>
+		<h3>Account Settings</h3>
+		<div class="container-fluid ">
+			<h4 class='text-light bg-primary'>Change Password</h4>
+			<h4 class="text-light bg-primary">Change Username</h4>
+			
+		</div>
+	</div>
+
+	<div id='billing'class=' tab-pane fade' >
+		<br>
+		<h3>Billing and Payment Settings</h3>
+		<br>
+		<h4> Recent Bills</h4>
+		<br>
+		<table class='table-striped table-hover col-sm-12' cellpadding="7" cellspacing="7">
+		<tr style='background-color: dodgerblue;' class='text-light'>
+				<th>User</th>
+				<th>Amount</th>
+				
+				<th>Date</th>
+			</tr>
+			{%for result in bills%}
+			<tr>
+				
+				<td>{{result.user}}</td>
+				<td>{{result.amount}}</td>
+				
+				<td>{{result.date}}</td>
+			</tr>
+				{%endfor%}
+			</table>
+	</div>
+
+
+</div>
+</div>
+	
+
+	
+{%endblock%}
